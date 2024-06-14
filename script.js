@@ -484,15 +484,58 @@ const tshirtWomen = [
     },
 ];
 
-
-wrapper.innerHTML = earbuds.map((x)=>{
+let productslist = [...earbuds,...shoes,...tshirtWomen];
+let newprod = [];
+let apicaller=(wrapper,data,num=4)=>{
+    
+wrapper.innerHTML = data.slice(0,num).map((x)=>{
     return `
     <div class = "product">
         <img src="${x.img}">
         <h2>${x.title}</h2>
         <h3 ><del style="font-size:16px;color:red">₹${x.price}</del><span style="color:green;font-size:21px"> ₹${x.price} </span><span style="font-size:15px;opacity:0.8;"> (77% OFF)</span></h3>
         
-            <button style="width:100%">Add To Cart</button>
+            <button onclick="addToCart(${x.id})" style="width:100%">Add To Cart</button>
 
     </div>`
 }).join('')
+}
+let renderCart=()=>{
+    
+    cartWrapper.innerHTML = newprod.map((x)=>{
+        return `
+        <div class = "product">
+            <img src="${x.img}">
+            <h2>${x.title}</h2>
+            <h3 ><del style="font-size:16px;color:red">₹${x.price}</del><span style="color:green;font-size:21px"> ₹${x.price} </span><span style="font-size:15px;opacity:0.8;"> (77% OFF)</span></h3>
+            
+                <button onclick="removecart(${x.id})" style="width:100%">Add To Cart</button>
+    
+        </div>`
+    }).join('')
+    }
+
+apicaller(earbudswrapper,earbuds)
+apicaller(shoeswrapper,shoes)
+apicaller(tshirtwrapper,tshirtWomen)
+
+const cartToggle = () => {
+    cartElem.classList.toggle('active')
+}
+const addToCart=(id)=>{
+    let product = productslist.find((x)=>x.id==id)
+    newprod.push(product);
+
+    renderCart();
+}
+const removecart=(id)=>{
+    let index = newprod.findIndex((x)=>x.id==id)
+    newprod.splice(index,1); 
+
+    
+    // let newCart = cartArr.filter((x) => x.id != id)
+    // cartArr = newCart
+
+    renderCart();
+}
+
