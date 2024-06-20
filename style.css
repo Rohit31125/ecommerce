@@ -55,6 +55,7 @@
 }
 .wrapper img {
     width: 100%;
+    cursor: pointer;
 }
 .wrapper .product h2 {
     overflow: hidden;
@@ -110,4 +111,98 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+.searchComp {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+    left: 10;
+    top: 80px;
+    display: none;
+    background-color: white;
+   
+    
+   
+}
+.searchComp .product *{
+margin: 20px;
+padding: 30px;
+    
+    
+    
+}
+
+.searchComp img{
+    height: 200px;
+
+}
+.searchComp button{
+    height: 80px;
+    align-self: center;
+    border-radius: 10px;
+
+}
+.searchComp .product h2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.singleProductWrap{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.255);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    display: none;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    
+}
+
+.singleProductWrap .product {
+    display: flex;
+    height: 80vh;
+    gap: 50px;
+    width: 70%;
+    background-color: white;
+    position: relative;
+
+}
+
+.singleProductWrap .product .col1,
+.product .col2 {
+    width: 50%;
+    padding: 40px;
+
+}
+
+.singleProductWrap  img {
+    width: 100%;
+}
+
+.singleProductWrap .product .col1 .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+
+}
+
+.singleProductWrap .product .col1 .images img {
+    border: 1px solid gray;
+    padding: 3px;
+}
+.singleProductWrap .product .cross i{
+   font-size: 25px;
+   align-self: center;
+   position: absolute;
+   right:20px;
+   top:20px;
+   cursor:pointer;
+
+
 }

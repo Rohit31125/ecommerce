@@ -14,14 +14,24 @@
     </style>
 </head>
     <body>
+        <div id="singleProductWrap" class="singleProductWrap">
+
+        </div>
+        <div id="searchComp" class="searchComp">
+
+        </div>
         <div class="navbar">
             <h1>Rohit's Store</h1>
             <div class="links">
-                <a>Home</a>
-                <a>About</a>
+                <a style="cursor: pointer;" onclick="searchComp.style.display = 'none'">Home</a>
+                <a style="cursor: pointer;" >About</a>
+            </div>
+            <div id="search" class="search">
+                <input id="searchVal" type="search" name="">
+                <button style="cursor: pointer;"  onclick="searchHandler()">Search</button>
             </div>
             <div id="shop" class="shop" onclick="cartToggle();itemno()">
-                <i class="fa-solid fa-shopping-bag"></i>
+                <i style="cursor: pointer;"  class="fa-solid fa-shopping-bag"></i>
                 
             </div>
 
