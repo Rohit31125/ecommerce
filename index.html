@@ -20,8 +20,9 @@
                 <a>Home</a>
                 <a>About</a>
             </div>
-            <div class="shop" onclick="cartToggle()">
+            <div id="shop" class="shop" onclick="cartToggle();itemno()">
                 <i class="fa-solid fa-shopping-bag"></i>
+                
             </div>
 
         </div>
@@ -52,13 +53,19 @@
         
             </div>
         </div>
-        <div class="cartElem" id="cartElem">
+        <div class="cartElem" id="cartElem" >
             <div class="cartHeader">
                 <h3>Cart</h3>
                 <i onclick="cartToggle()" class="fa-solid fa-x"></i>
             </div>
-            <div class="cartWrapper" id="cartWrapper"></div>
+            <div class="cartWrapper" id="cartWrapper" style="overflow-y: scroll;">
+               
+            </div>
+            <div class="total" id="total">
+                
+            </div>
         </div>
+       
             
             
         
@@ -66,6 +73,8 @@
         
         
         <script src="script.js">
+            let price = price();
+            document.getElementById('total').innerText = price;
     </script>
         
         

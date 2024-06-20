@@ -503,17 +503,25 @@ wrapper.innerHTML = data.slice(0,num).map((x)=>{
 let renderCart=()=>{
     
     cartWrapper.innerHTML = newprod.map((x)=>{
+        
         return `
-        <div class = "product">
+        <div class = "product" 
             <img src="${x.img}">
             <h2>${x.title}</h2>
             <h3 ><del style="font-size:16px;color:red">₹${x.price}</del><span style="color:green;font-size:21px"> ₹${x.price} </span><span style="font-size:15px;opacity:0.8;"> (77% OFF)</span></h3>
             
-                <button onclick="removecart(${x.id})" style="width:100%">Add To Cart</button>
+              <i onclick='removecart(${x.id})' class='fa-solid fa-x'></i>
+              
+             
     
         </div>`
     }).join('')
-    }
+    pricecalc();
+    itemno();
+     
+}
+
+   
 
 apicaller(earbudswrapper,earbuds)
 apicaller(shoeswrapper,shoes)
@@ -522,20 +530,37 @@ apicaller(tshirtwrapper,tshirtWomen)
 const cartToggle = () => {
     cartElem.classList.toggle('active')
 }
+let totalprice = 0;
+let itemnum = 0;
 const addToCart=(id)=>{
     let product = productslist.find((x)=>x.id==id)
     newprod.push(product);
-
+    totalprice += product.price;
+    itemnum +=1;
     renderCart();
 }
 const removecart=(id)=>{
     let index = newprod.findIndex((x)=>x.id==id)
+    let product = productslist.find((x)=>x.id==id)
     newprod.splice(index,1); 
-
+    totalprice -= product.price
+    itemnum -=1;
     
     // let newCart = cartArr.filter((x) => x.id != id)
     // cartArr = newCart
 
     renderCart();
 }
+const pricecalc = () => {
+   
+    total.innerHTML = `<p style="font-size:20px;margin-left:20px">Total Price: ₹${totalprice}</p>`;
+}
+const itemno=()=>{
+    shop.innerHTML = `
+    <i class="fa-solid fa-shopping-bag"></i>
+    <strong><p>${itemnum}</p></strong>`
+}
+
+
+
 
